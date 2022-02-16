@@ -1,0 +1,114 @@
+
+
+<div class="container">
+    
+   
+    <nav aria-label="breadcrumb" class="main-breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a >Home</a></li>
+          <li class="breadcrumb-item " aria-current="page"><a >User Profile</a></li>
+          <li class="breadcrumb-item active">Edit Profile</li>
+        </ol>
+      </nav>
+    <div class="table-responsive">
+        
+        <div class="table-wrapper">
+        
+            <div class="table-title">
+
+                
+                <div class="row">
+                    <div class="col-xs-5">
+                        <h2>User <b>Management</b></h2>
+                    </div>
+                    <div class="col-xs-7">
+                        <a href="#" class="btn btn-primary"><i class="material-icons">&#xE147;</i> <span>Add New User</span></a>
+                    </div>
+                </div>
+            </div>
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>pseudo</th>	
+                        <th>password</th>						
+                        <th>Phone Number</th>
+                        <th>Role</th>
+                        <th>Task</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let t of usertab   index as i">
+                        <td>{{i}}</td>
+                        <td><img [src]="t.image" class="avatar" alt="Avatar"> {{t.name}}</td>
+                        <td>{{t.code}}</td>
+                        <td>{{t.password}}</td>
+
+                        <td>{{t.phone}}</td>                        
+                        <td *ngIf="t.admin">Admin <img width="21" height="21" src="https://img.icons8.com/fluency/48/4a90e2/instagram-check-mark.png"/></td>
+                        <td *ngIf="!t.admin">User</td>
+                        <td>{{t.task}}</td>
+
+                        <td>
+
+                          <button style="border-radius: 15px;" (click)="deleteUser(t.id)" type="button" class="btn btn-danger btn-sm">
+                            <span class="glyphicon glyphicon-trash" ></span> Trash 
+                          </button>
+                        </td>
+                    </tr>
+                   
+                </tbody>
+            </table>
+        </div>
+
+ 
+    </div>        
+</div>   
+
+
+
+<form  >
+    <div class="row" style="margin-left: 4%;">
+     
+      <div class="col-3">
+        <label >Numero hotel</label>
+        <input  type="number" class="form-control"   />
+      </div>
+      <div class="col-3">
+      <label >Nom hotel</label>
+      <input type="text"  class="form-control" /><br>
+    </div>
+    <div class="col-3">
+      <label >Nom ville</label><br>
+      <input type="text" class="form-control" ><br>
+    </div>
+    <div class="row">
+      <div class="col-3">
+        <label >image de couverture</label>
+        <input type="text"   class="form-control"  />
+      </div>
+      <div class="col-3">
+        <label >nombre etoile</label>
+        <input type="number"   class="form-control"   />
+      </div>
+      <div class="col-3">
+        <label >meullieur Prix</label>
+        <input type="number" step="100"    class="form-control"  /><br>
+      </div>
+      
+ 
+    
+      <div class="col-3">
+        <br>
+      <button class="btn btn-outline-success" >confirmer</button>
+      <input class="btn btn-outline-dark"type="button" value="annuler"/>
+    </div>
+    </div>
+  
+    
+  
+  
+    </div>
+  </form>

@@ -1,0 +1,68 @@
+
+
+
+<app-navbar [code]="code"></app-navbar>
+<app-sidebar [code]="code"></app-sidebar>
+
+  <div class="container ">
+    <h3 class="title ">
+        Overview</h3>
+  <div class="row" >
+
+    <div class="col-4">
+      <div class="card " id="field"> 
+        <img class="card-img-left" src="assets/area.png" style="margin-top:15px;margin-left: 6PX;"width="80" height="90"/>
+        <div class="card-body">
+         
+            <h5 class=" card-title"  style="margin-left: 8px;">AREAS</h5>
+            <h5 class=" card-title" style="margin-left: 120px;margin-top:-130px;">NUMBER</h5>
+            <h5 class=" card-title" style="margin-left: 120px;">1</h5>
+        </div>
+    
+      </div>
+  
+    </div>
+
+    <div class="col-4">
+        <div class="card " id="field"> 
+          <img class="card-img-left" src="assets/plant.png"  style="margin-top:15px;margin-left: 15PX;" width="80" height="90"/>
+          <div class="card-body">
+           
+              <h5 class=" card-title" style="margin-left: 8px;">COFFEE</h5>
+              <h5 class=" card-title" style="margin-left: 120px;margin-top:-130px;">NUMBER</h5>
+              <h5 class=" card-title" style="margin-left: 120px;">1</h5>
+          </div>
+      
+        </div>
+    
+      </div>
+
+      <div class="col-4">
+        <div class="card " id="field"> 
+          <img class="card-img-left" src="assets/sensor.png" style="margin-left:15px"width="80" height="100"/>
+          <div class="card-body">
+           
+              <h5 class=" card-title-left" >SENSORS</h5>
+              <h5 class=" card-title" style="margin-left: 120px;margin-top:-130px;">NUMBER</h5>
+              <h5 class=" card-title" style="margin-left: 120px;">1</h5>
+          </div>
+      
+        </div>
+    
+      </div>
+
+  </div>
+  <h3 class="title ">
+    Last workers reports</h3>
+    <ng-container  *ngFor="let t of getreportsTab()" >
+    <div  *ngIf='t.typeMessage=="danger"'class="alert alert-danger" role="alert" >
+   Danger : {{consultInfo(t.codeUser).name}}  -  {{t.message}}  -  Area "{{t.area}}" 
+   <div class="date">{{t.date}} </div>
+    </div>
+    <div *ngIf='t.typeMessage=="info"' class="alert alert-info" role="alert" >
+      Info : {{consultInfo(t.codeUser).name}}  -  {{t.message}}  -  Area "{{t.area}}" 
+      <div class="date">{{t.date}} </div>
+
+     </div>
+  </ng-container>
+</div>

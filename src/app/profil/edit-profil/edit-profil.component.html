@@ -1,0 +1,87 @@
+<div class="container">
+    <div class="main-body">
+
+        <nav aria-label="breadcrumb" class="main-breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a [routerLink]="['../../../home',code]">Home</a></li>
+              <li class="breadcrumb-item " aria-current="page"><a  [routerLink]="['../..',code]">User Profile</a></li>
+              <li class="breadcrumb-item active">Edit Profile</li>
+            </ol>
+          </nav>
+
+
+        <form [formGroup]="userForm" (ngSubmit)="updateInfo(userForm.value)" class="row">
+            <div class="col-lg-4">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex flex-column align-items-center text-center">
+                       
+                            <div class="mt-3">
+                            
+                            
+                                    <div class="text-center">
+                                      <img [src]=" imgSrc" class="rounded-circle p-1 bg-primary" width="150" height="150" (click)="fileUploader.click()">
+                                    </div>
+                                    <div class="form-group">
+                                      <label>Select file to upload</label>
+                                      <input type="file"  (change)="showPreview($event)" accept="image/*" class="form-control" #fileUploader >
+                                 
+                                    </div>
+                             
+                            </div>
+                        </div>
+                      
+                       
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-8">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row mb-5">
+                            <div class="col-sm-3">
+                                <h5 class="mb-0">Full Name</h5>
+                            </div>
+                            <div class="col-sm-8 text-secondary">
+                                <input type="text" formControlName="name" class="form-control" [value]="usertab?.name">
+                            </div>
+                        </div>
+                        <div class="row mb-5">
+                            <div class="col-sm-3">
+                                <h5 class="mb-0">Email</h5>
+                            </div>
+                            <div class="col-sm-8 text-secondary">
+                                <input type="text" formControlName="email" class="form-control" [value]="usertab?.email">
+                            </div>
+                        </div>
+                        <div class="row mb-5">
+                            <div class="col-sm-3">
+                                <h5 class="mb-0">Phone</h5>
+                            </div>
+                            <div class="col-sm-8 text-secondary">
+                                <input type="text" class="form-control" formControlName="phone" [value]=" usertab?.phone">
+                            </div>
+                        </div>
+                
+                        <div class="row mb-5">
+                            <div class="col-sm-3">
+                                <h5 class="mb-0">Task</h5>
+                            </div>
+                            <div class="col-sm-8 text-secondary">
+                                <input type="text" class="form-control" formControlName="task" [value]=" usertab?.task">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-3"></div>
+                            <div class="col-sm-9 text-secondary">
+                                <input type="submit" class="btn btn-primary px-4"value="Save Changes">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+           
+            </div>
+        </form>
+    </div>
+
+</div>

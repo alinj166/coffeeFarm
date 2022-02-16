@@ -1,0 +1,100 @@
+
+<div class="area"></div><nav class="main-menu">
+    <ul>
+        <li>
+        
+            <img src="./assets/navMenu.png" style="margin-left: 8px;"  title="menu"  >
+      
+            
+        </li>
+        <li>
+            <a href="http://justinfarrow.com" >
+             <img src="./assets/navMap.png">
+                <span class="nav-text" >
+                   Farm map
+                </span>
+            </a>
+          
+        </li>
+        <li class="has-subnav">
+            <a href="#">
+                <img  src="./assets/navCamera.png">
+                <span class="nav-text">
+                  Camera
+                </span>
+            </a>
+            
+        </li>
+        <li class="has-subnav">
+            <a href="#">
+                <img src="./assets/navSensor.png">
+                <span class="nav-text">
+                Sensors
+                </span>
+            </a>
+            
+        </li>
+        <li class="has-subnav">
+            <a href="#">
+                <img src="./assets/navActuators.png">
+                <span class="nav-text">
+                    Actuators
+
+                </span>
+            </a>
+           
+        </li>
+        <li>
+            <a href="#">
+                <img src="./assets/navManipulation.png">
+                <span class="nav-text">
+                    Manipulation
+
+                </span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <img src="./assets/navGraph.png">
+                <span class="nav-text">
+                    Graph/Charts
+
+                </span>
+            </a>
+        </li>
+        <li>
+           <a href="#">
+            <img src="./assets/navAi.png">
+                <span class="nav-text">
+                    AI 
+                </span>
+            </a>
+        </li>
+        <li>
+           <a href="#">
+            <img src="./assets/navReports.png">
+                <span class="nav-text">
+                    Reports
+                </span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <img src="./assets/navCoffeeplant.png">
+                <span class="nav-text">
+                    Coffee Plants  
+                </span>
+            </a>
+        </li>
+        <li [hidden]="adminNavigate()">
+            <a [routerLink]="['../../setting',code]" >
+                <img src="./assets/navSettings.png">
+                <span class="nav-text">
+                    Settings
+                </span>
+            </a>
+        </li>
+    </ul>
+
+ 
+</nav>

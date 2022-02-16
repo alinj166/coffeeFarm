@@ -98,6 +98,16 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "coffeeFarm:build:production",
+            "firebaseProject": "coffeefarm-7cdae",
+            "firebaseHostingSite": "coffeefarm-7cdae"
+          }
         }
       }
     }

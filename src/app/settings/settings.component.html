@@ -1,0 +1,56 @@
+<app-navbar></app-navbar>
+<app-sidebar></app-sidebar>
+
+<div id="filed1">
+    <nav class="main-menu">
+        <ul>
+            <li>
+            
+                <img src="./assets/navMenu.png" style="margin-left: 8px;"  title="menu"  >
+          
+                
+            </li>
+            <li>
+                <a [routerLink]="['../addimage',code]" >
+                 <img src="./assets/navMap.png">
+                    <span class="nav-text" >
+                       ADD IMAGE
+                    </span>
+                </a>
+              
+            </li>
+
+            <li>
+                <a href="#" >
+                 <img src="./assets/navMap.png">
+                    <span class="nav-text" >
+                     EDIT AREA
+                    </span>
+                </a>
+              
+            </li>
+
+            <li>
+                <a href="#" >
+                 <img src="./assets/navMap.png">
+                    <span class="nav-text" >
+                    EDIT SENSORS
+                    </span>
+                </a>
+              
+            </li>
+
+            <li>
+                <a routerLink="../editcamera" >
+                 <img src="./assets/navMap.png">
+                    <span class="nav-text" >
+                     EDIT CAMERAS
+                    </span>
+                </a>
+              
+            </li>
+</ul>
+
+</nav>
+<div class="title">EXPLORE</div>
+</div>

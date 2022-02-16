@@ -1,0 +1,54 @@
+#field{
+    background-color: rgb(255, 255, 255);
+    border-radius: 20px;
+width: 250px;
+height: 150px;
+margin-top: 30px;
+box-shadow: 0 1px 3px 0 rgba(0,0,0,.1), 0 1px 2px 0 rgba(0,0,0,.06);
+
+}
+.title{
+
+    color: rgb(55, 55, 133);
+font-weight: bold;
+font-size:20px ;
+margin-left: 70px;
+margin-top: 50px;
+border-bottom:  2px solid rgba(0, 0, 0, 0.06);
+
+}
+.row{position:relative;
+    left: 100px;}
+
+
+     .alert-danger{
+ 
+        color: rgb(189, 2, 2);
+        border-color: rgb(189, 2, 2);
+
+        background-color:white;
+        box-shadow: -2px 2px 7px #888888;
+        font-size: 15px;
+        border: 2px solid  rgb(189, 2, 2);;
+        font-weight: bold;
+        border-radius: 10px;
+
+    }
+
+    .alert-info{
+      
+        color: rgb(109, 175, 252);
+        background-color:white;
+        box-shadow: -2px 2px 7px #888888;
+        font-weight: bold;
+        font-size: 15px;
+        border: 2px solid  rgb(109, 175, 252);
+        border-radius: 10px;
+
+    }
+
+    .date{
+position: absolute;
+        display: inline-block;
+        left: 80%;
+    }

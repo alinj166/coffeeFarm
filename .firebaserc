@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "coffeefarm-7cdae"
+  },
+  "targets": {
+    "coffeefarm-7cdae": {
+      "hosting": {
+        "coffeeFarm": [
+          "coffeefarm-7cdae"
+        ]
+      }
+    }
+  }
+}
