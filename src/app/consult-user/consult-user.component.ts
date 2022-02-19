@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import { NormalUser } from '../classes/normal-user';
 import { NormalUserService } from '../services/normal-user.service';
 
@@ -9,14 +12,38 @@ import { NormalUserService } from '../services/normal-user.service';
 })
 export class ConsultUserComponent implements OnInit {
   usertab:NormalUser[]=[];
-  constructor(private userserv:NormalUserService) { }
+  code:string;
+  hide:boolean=true;
+  userForm!: FormGroup;
+  constructor(private fs:AngularFirestore,private userserv:NormalUserService,private f:FormBuilder,private activatedRoute:ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.consultInfo();
+    this.userForm=this.f.group({
+    code:[""],
+    email:[""],
+    phone:[""],
+    image:[""],
+    password:[""],
+      task:[""],
+      admin:[false],
+      name:[""]
+    });
 
+
+    this.consultInfo();
+    this.code=this.activatedRoute.snapshot.params['code'];
+
+
+    
   }
 
-
+  hideWindow()
+ { if (!this.hide)
+   this.hide=true;
+  else 
+  this.hide=false;
+  
+  }
   consultInfo()
   {
       this.userserv.login().subscribe(data=>{
@@ -40,4 +67,20 @@ deleteUser(id)
 {
 return this.userserv.delete(id);
 }
+
+addInfo()
+{ 
+ 
+
+  this.fs.collection("user").add(this.userForm.value)
+  .then(
+  () =>{
+    alert("l'ajout fait avec succés");
+  }
+ )
+
+
+
+}
+
 }

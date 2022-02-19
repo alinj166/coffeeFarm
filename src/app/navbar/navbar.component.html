@@ -10,7 +10,7 @@
 				<a href="#" data-toggle="dropdown" class="dropdown-toggle user-action"><img [src]="consultInfo()?.image" class="avatar" alt="Avatar">{{consultInfo()?.name}} </a>
 				<ul class="dropdown-menu">
 					<li><a [routerLink]="['../../profile',code]"><i class="fa fa-user-o"></i> Profile</a></li>
-					<li [hidden]="adminNavigate()"><a href="#"><i class="fa fa-calendar-o" > </i> Consult users</a></li>
+					<li [hidden]="adminNavigate()"><a [routerLink]="['../../consultUsers',code]"><i class="fa fa-calendar-o" > </i> Consult users</a></li>
 				
 					<li class="divider"></li>
 					<li><a href="../login"><i class="material-icons">&#xE8AC;</i> Logout</a></li>

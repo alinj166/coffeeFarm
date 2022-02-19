@@ -21,7 +21,7 @@ export class SidebarComponent implements OnInit {
   }
   adminNavigate():boolean
   {
-    if (this.consultInfo().admin==false)
+    if (this.consultInfo()?.admin==false)
   return true;
     else 
    return false;

@@ -1,5 +1,5 @@
 export class Equipement {
-    constructor(public code:String ,public name:String,public type:String)
+    constructor(public name:string ,public ip:string,public type:string,public category:string,public posX:number,public posY:number)
 {
     
 }

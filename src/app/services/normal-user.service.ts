@@ -22,4 +22,18 @@ export class NormalUserService {
   const tutorialsRef = this.fs.collection('user');
   tutorialsRef.doc(id).delete();
  }
+ area()
+ {
+  return this.fs.collection('area').snapshotChanges();
+ }
+
+ equipement()
+ {
+  return this.fs.collection('Equipement').snapshotChanges();
+ }
+ plant()
+ {
+  return this.fs.collection('plant').snapshotChanges();
+  
+ }
 }

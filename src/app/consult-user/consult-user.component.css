@@ -1,11 +1,15 @@
 .container {
     color: #566787;
-    background: #f5f5f5;
+
     font-family: 'Varela Round', sans-serif;
-    font-size: 13px;
+
+ 
+}
+.main_body{    padding: 15px;   
+
 }
 .table-responsive {
-    margin: 30px 0;
+    margin: 90px 0;
 }
 .table-wrapper {
     min-width: 1000px;

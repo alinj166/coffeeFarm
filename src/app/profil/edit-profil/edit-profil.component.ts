@@ -94,13 +94,7 @@ consultInfo()
 
 }
 
-onSubmit(formValue) {
 
- 
-    var filePath = `profile/${this.selectedImage.name.split('.').slice(0, -1).join('.')}_${new Date().getTime()}`;
-    const fileRef = this.storage.ref(filePath);
-    this.storage.upload(filePath, this.selectedImage).snapshotChanges().subscribe();
-  }
 
 
 

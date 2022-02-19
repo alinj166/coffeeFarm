@@ -2,14 +2,15 @@
 
 <div class="container">
     
-   
+   <div class="main_body">
     <nav aria-label="breadcrumb" class="main-breadcrumb">
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a >Home</a></li>
-          <li class="breadcrumb-item " aria-current="page"><a >User Profile</a></li>
-          <li class="breadcrumb-item active">Edit Profile</li>
+          <li class="breadcrumb-item"><a [routerLink]="['../../home',code]">Home</a></li>
+          <li class="breadcrumb-item active">Consult users</li>
         </ol>
       </nav>
+
+      
     <div class="table-responsive">
         
         <div class="table-wrapper">
@@ -22,7 +23,7 @@
                         <h2>User <b>Management</b></h2>
                     </div>
                     <div class="col-xs-7">
-                        <a href="#" class="btn btn-primary"><i class="material-icons">&#xE147;</i> <span>Add New User</span></a>
+                        <button (click)="hideWindow()"  class="btn btn-primary"><i class="material-icons">&#xE147;</i> <span>Add New User</span></button>
                     </div>
                 </div>
             </div>
@@ -31,7 +32,7 @@
                     <tr>
                         <th>#</th>
                         <th>Name</th>
-                        <th>pseudo</th>	
+                        <th>Code</th>	
                         <th>password</th>						
                         <th>Phone Number</th>
                         <th>Role</th>
@@ -41,8 +42,8 @@
                 </thead>
                 <tbody>
                     <tr *ngFor="let t of usertab   index as i">
-                        <td>{{i}}</td>
-                        <td><img [src]="t.image" class="avatar" alt="Avatar"> {{t.name}}</td>
+                        <td>{{i+1}}</td>
+                        <td><img [src]="t.image" class="avatar" alt="Avatar" height="40" width="40"> {{t.name}}</td>
                         <td>{{t.code}}</td>
                         <td>{{t.password}}</td>
 
@@ -68,47 +69,60 @@
 </div>   
 
 
-
-<form  >
-    <div class="row" style="margin-left: 4%;">
+<div [hidden]="hide" style="margin-left: 3%;margin-top:-7%;">
+<form [formGroup]="userForm" (ngSubmit)="addInfo()" >
+    <div class="row" >
      
       <div class="col-3">
-        <label >Numero hotel</label>
-        <input  type="number" class="form-control"   />
+        <label >Code</label>
+        <input  type="text" class="form-control"  formControlName="code" />
       </div>
+  
       <div class="col-3">
-      <label >Nom hotel</label>
-      <input type="text"  class="form-control" /><br>
-    </div>
-    <div class="col-3">
-      <label >Nom ville</label><br>
-      <input type="text" class="form-control" ><br>
-    </div>
-    <div class="row">
-      <div class="col-3">
-        <label >image de couverture</label>
-        <input type="text"   class="form-control"  />
+      <label >password</label><br>
+      <input type="password" class="form-control"   formControlName="password" ><br>
       </div>
+  
       <div class="col-3">
-        <label >nombre etoile</label>
-        <input type="number"   class="form-control"   />
+        <label >Name</label>
+        <input type="text"   class="form-control"   formControlName="name" />
       </div>
-      <div class="col-3">
-        <label >meullieur Prix</label>
-        <input type="number" step="100"    class="form-control"  /><br>
-      </div>
-      
  
+      <div class="col-3">
+        <label >Email</label>
+        <input type="text"   class="form-control"   formControlName="email"  />
+      </div>
+      <div class="col-3">
+        <label >Phone</label>
+        <input type="text" class="form-control"    formControlName="phone"/><br>
+      </div>
+      <div class="col-3">
+        <label >Task</label>
+        <input type="text" class="form-control"    formControlName="task" /><br>
+      </div>
+      <div class="col-3">
+        <label >Image URL</label>
+        <input type="text" class="form-control"   formControlName="image" /><br>
+      </div>
+      <div class="row">
+      <div class="col-3">
+        <label >Admin</label>
+        <input type="checkbox"   formControlName="admin"/><br>
+      </div>
+     
+    </div>
     
       <div class="col-3">
         <br>
-      <button class="btn btn-outline-success" >confirmer</button>
-      <input class="btn btn-outline-dark"type="button" value="annuler"/>
+      <button class="btn btn-success" >confirm</button>
+      <input class="btn btn-light"type="button" (click)="hideWindow()" value="cancel"/>
     </div>
     </div>
   
     
   
   
-    </div>
+
   </form>
+
+</div></div>
