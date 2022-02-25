@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { NormalUser } from '../classes/normal-user';
 import { NormalUserService } from '../services/normal-user.service';
+import {finalize} from 'rxjs/operators';
 
 @Component({
   selector: 'app-consult-user',
@@ -15,7 +17,7 @@ export class ConsultUserComponent implements OnInit {
   code:string;
   hide:boolean=true;
   userForm!: FormGroup;
-  constructor(private fs:AngularFirestore,private userserv:NormalUserService,private f:FormBuilder,private activatedRoute:ActivatedRoute) { }
+  constructor(private storage:AngularFireStorage,private fs:AngularFirestore,private userserv:NormalUserService,private f:FormBuilder,private activatedRoute:ActivatedRoute) { }
 
   ngOnInit(): void {
     this.userForm=this.f.group({
@@ -65,21 +67,39 @@ export class ConsultUserComponent implements OnInit {
       }
 deleteUser(id)
 {
-return this.userserv.delete(id);
+  if (window.confirm("you want to delete this user")) {
+    return this.userserv.delete(id);
+}
+
 }
 
 addInfo()
-{ 
+{  var filePath = `profile/${this.userForm.value.image.split('.').slice(0, -1).join('.')}_${new Date().getTime()}`;
+    const fileRef = this.storage.ref(filePath);
+    this.storage.upload(filePath, this.userForm.value.image).snapshotChanges().pipe(
+      finalize(() => {
+        fileRef.getDownloadURL().subscribe((url) => {
+          this.userForm.value.image = url;
+          this.fs.collection("user").doc(this.usertab.find(e=>e.code==this.userForm.value.code).id).update({
+            image:url
+          })
+        })
+      })
+    ).subscribe();
+  
  
-
+if (this.usertab.find(e=>e.code==this.userForm.value.code)==null)
   this.fs.collection("user").add(this.userForm.value)
   .then(
   () =>{
-    alert("l'ajout fait avec succés");
+ alert("addition done successfully");
+  
   }
+  
+
  )
-
-
+ else
+ alert("formula already exists, re-enter!");
 
 }
 

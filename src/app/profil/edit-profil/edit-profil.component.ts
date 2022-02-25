@@ -25,10 +25,8 @@ export class EditProfilComponent implements OnInit {
     this.imgSrc = this.usertab?.image;
 
     this.userForm=this.f.group({
-    
       email:[""],
       phone:[""],
-      image:[""],
       task:[""],
       name:[""]
     });
@@ -36,37 +34,38 @@ export class EditProfilComponent implements OnInit {
 
 }
   code= this.activatedRoute.snapshot.params['code'];
-updateInfo(formValue)
+updateInfo()
 { 
+ let  ok:Boolean=false; 
+    this.fs.collection("user").doc(this.usertab?.id).set({
+    code: this.usertab?.code,
+ password:this.usertab?.password,
+    email:this.userForm.value.email,
+    phone:this.userForm.value.phone,
+    image:this.usertab.image,
+    task: this.userForm.value.task,
+    admin:this.usertab?.admin,
+    name: this.userForm.value.name,
+  });
+  ok=true;
+  if (this.selectedImage!=null) 
+  {
+   var filePath = `profile/${this.selectedImage.name.split('.').slice(0, -1).join('.')}_${new Date().getTime()}`;
   const fileRef = this.storage.ref(filePath);
-
-  var filePath = `profile/${this.selectedImage.name.split('.').slice(0, -1).join('.')}_${new Date().getTime()}`;
   this.storage.upload(filePath, this.selectedImage).snapshotChanges().pipe(
     finalize(() => {
       fileRef.getDownloadURL().subscribe((url) => {
-        formValue['image'] = url;
-    
+        this.userForm.value.image = url;
+        this.fs.collection("user").doc(this.usertab.id).update({
+          image:url
+        })
       })
     })
   ).subscribe();
-
-
-  this.fs.collection("user").doc( this.usertab?.id).set({
-    code: this.usertab?.code,
-    password: this.usertab?.password,
-    email: this.userForm.value.email,
-    phone:this.userForm.value.phone,
-    image:filePath,
-    task:this.userForm.value.image,
-    admin: this.usertab?.admin,
-    name:this.userForm.value.name,
-  })
-  .then(
-  () =>{
-    this.router.navigate(['./home',this.code]);
-  }
- )
-
+}
+if (!ok)
+return alert("Error data send")
+this.router.navigate(['./home',this.code]);
 
 
 }
@@ -93,13 +92,6 @@ consultInfo()
       });
 
 }
-
-
-
-
-
-
-
 
 showPreview(event: any) {
   if (event.target.files && event.target.files[0]) {
