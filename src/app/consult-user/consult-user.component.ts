@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { NormalUser } from '../classes/normal-user';
 import { NormalUserService } from '../services/normal-user.service';
@@ -20,24 +20,29 @@ export class ConsultUserComponent implements OnInit {
   constructor(private storage:AngularFireStorage,private fs:AngularFirestore,private userserv:NormalUserService,private f:FormBuilder,private activatedRoute:ActivatedRoute) { }
 
   ngOnInit(): void {
+
     this.userForm=this.f.group({
-    code:[""],
-    email:[""],
-    phone:[""],
-    image:[""],
-    password:[""],
-      task:[""],
+    code:["",Validators.required],
+    email:["",[Validators.required,Validators.pattern('[A-z,0-9]*@[A-z,.,0-9]+')]],
+    phone:["",[Validators.pattern('[0-9]*')]],
+    image:["",Validators.required],
+    password:["",Validators.required],
+    task:["",Validators.required],
       admin:[false],
-      name:[""]
+      name:["",Validators.required]
     });
 
 
     this.consultInfo();
     this.code=this.activatedRoute.snapshot.params['code'];
-
-
-    
   }
+
+  get phone(){
+    return this.userForm.controls.phone;
+    }
+    get email(){
+      return this.userForm.controls.email;
+      }
 
   hideWindow()
  { if (!this.hide)

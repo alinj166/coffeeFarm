@@ -74,34 +74,40 @@
     <div class="row" >
      
       <div class="col-3">
-        <label >Code</label>
+        <label >Code <sup>*</sup></label>
         <input  type="text" class="form-control"  formControlName="code" />
       </div>
   
       <div class="col-3">
-      <label >password</label><br>
+      <label >password<sup>*</sup></label><br>
       <input type="password" class="form-control"   formControlName="password" ><br>
       </div>
   
       <div class="col-3">
-        <label >Name</label>
+        <label >Name<sup>*</sup></label>
         <input type="text"   class="form-control"   formControlName="name" />
       </div>
  
       <div class="col-3">
-        <label >Email</label>
+        <label >Email<sup>*</sup></label>
         <input type="text"   class="form-control"   formControlName="email"  />
+        <div class="alert alert-danger" style="margin-top:10px"   *ngIf="email.errors?.pattern && email?.touched">format email invalide </div>
+        <div class="alert alert-warning" style="margin-top:10px"  *ngIf="email.errors?.required && email?.touched">required </div>
+      
       </div>
       <div class="col-3">
         <label >Phone</label>
         <input type="text" class="form-control"    formControlName="phone"/><br>
+        <div class="alert alert-danger" style="margin-top:-10px" *ngIf="phone.errors?.pattern && phone?.touched">format phone invalid </div>
+
       </div>
       <div class="col-3">
-        <label >Task</label>
+        <label >Task<sup>*</sup></label>
         <input type="text" class="form-control"    formControlName="task" /><br>
+
       </div>
       <div class="col-3">
-        <label >Image URL</label>
+        <label >Image URL<sup>*</sup></label>
         <input type="text" class="form-control"   formControlName="image" /><br>
       </div>
       <div class="row">
@@ -114,7 +120,7 @@
     
       <div class="col-3">
         <br>
-      <button class="btn btn-success" >confirm</button>
+      <button class="btn btn-success"  [disabled]="userForm.invalid">confirm</button>
       <input class="btn btn-light"type="button" (click)="hideWindow()" value="cancel"/>
     </div>
     </div>

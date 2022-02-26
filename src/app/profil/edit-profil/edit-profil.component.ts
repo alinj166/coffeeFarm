@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NormalUser } from 'src/app/classes/normal-user';
 import { NormalUserService } from 'src/app/services/normal-user.service';
@@ -25,14 +25,23 @@ export class EditProfilComponent implements OnInit {
     this.imgSrc = this.usertab?.image;
 
     this.userForm=this.f.group({
-      email:[""],
-      phone:[""],
-      task:[""],
-      name:[""]
+      email:["",[Validators.required,Validators.pattern('[A-z,0-9]*@[A-z,.,0-9]+')]],
+      phone:["",[Validators.pattern('[0-9]*')]],
+      task:["",Validators.required],
+      name:["",Validators.required]
     });
 
 
 }
+
+
+get phone(){
+  return this.userForm.controls.phone;
+  }
+  get email(){
+    return this.userForm.controls.email;
+    }
+
   code= this.activatedRoute.snapshot.params['code'];
 updateInfo()
 { 

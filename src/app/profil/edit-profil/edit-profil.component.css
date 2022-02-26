@@ -1,6 +1,12 @@
 .main-body {
     padding: 15px;    
 }
+
+sup{
+    color:red;
+    font-weight: bold;
+    font-size: 14px;
+}
 .card {
     position: relative;
     margin-top: 100px;

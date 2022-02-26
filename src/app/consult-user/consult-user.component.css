@@ -107,6 +107,8 @@ table.table .avatar {
     line-height: 10px;
 }
 
-
-
-
+sup{
+    color:red;
+    font-weight: bold;
+    font-size: 14px;
+}
