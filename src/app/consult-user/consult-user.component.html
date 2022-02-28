@@ -107,8 +107,12 @@
 
       </div>
       <div class="col-3">
-        <label >Image URL<sup>*</sup></label>
-        <input type="text" class="form-control"   formControlName="image" /><br>
+  
+        <div class="form-group">
+          <label>Select Imgae to upload<sup>*</sup></label>
+          <input type="file" formControlName="image"  (change)="showPreview($event)" accept="image/*" class="form-control" #fileUploader >
+     
+        </div>
       </div>
       <div class="row">
       <div class="col-3">
